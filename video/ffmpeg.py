@@ -262,9 +262,8 @@ def startVideoCapture():
         os.system("v4l2-ctl -c saturation={saturation}".format(saturation=robotSettings.saturation))
 
     
-    videoCommandLine = ('{ffmpeg} -f {input_format} -framerate 25 -video_size {xres}x{yres}'
-                        ' -r 25 {in_options} -i {video_device} {video_filter}'
-                        ' -f fbdev -framerate 2 -i /dev/fb0 -filter_complex "[1:v]colorkey=0x000000:0.1:0.0[ckout];[0:v][ckout]overlay[out]" -map "[out]"'
+    videoCommandLine = ('{ffmpeg} '
+                        '-f fbdev -framerate 20 -i /dev/fb0'
                         ' -f mpegts -codec:v {video_codec} -b:v {video_bitrate}k -bf 0'
                         ' -muxdelay 0.001 {out_options}'
                         ' http://{video_host}:{video_port}/{stream_key}/{xres}/{yres}/')
