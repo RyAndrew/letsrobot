@@ -269,10 +269,6 @@ def startVideoCapture():
                         ' http://{video_host}:{video_port}/{stream_key}/{xres}/{yres}/')
                         
     videoCommandLine = videoCommandLine.format(ffmpeg=ffmpeg_location,
-                            input_format=video_input_format,
-                            in_options=video_input_options,
-                            video_device=video_device, 
-                            video_filter=video_filter,
                             video_codec=video_codec,
                             video_bitrate=video_bitrate,
                             out_options=video_output_options,
